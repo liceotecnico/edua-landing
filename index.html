@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDUA — La plataforma escolar de Chile</title>
+<meta name="description" content="EDUA centraliza asistencia, planificaciones, convivencia, PIE y más para los liceos de Chile. Soporte local en Talcahuano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1a56db;
+  --blue-light: #e6f1fb;
+  --blue-dark: #0c447c;
+  --green: #0f6e56;
+  --green-light: #e1f5ee;
+  --amber: #ba7517;
+  --amber-light: #faeeda;
+  --pink: #993556;
+  --pink-light: #fbeaf0;
+  --purple: #534ab7;
+  --purple-light: #eeedfe;
+  --navy: #0f172a;
+  --slate: #475569;
+  --muted: #94a3b8;
+  --border: #bfdbfe;
+  --bg: #f8faff;
+  --white: #ffffff;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(26,86,219,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--navy);line-height:1.6}
+h1,h2,h3{font-family:'Sora',sans-serif;font-weight:600}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Sora',sans-serif;font-size:20px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:-.3px}
+.nav-logo span{color:var(--green)}
+.nav-links{display:flex;align-items:center;gap:1rem}
+.btn-nav{background:var(--blue);color:#fff;border:none;border-radius:20px;padding:8px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.btn-ghost-nav{background:transparent;color:var(--blue);border:1.5px solid var(--border);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 4rem;background:linear-gradient(160deg,#e8f4fd 0%,#f0f7ff 40%,#f5f0ff 70%,#e8f0fe 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(26,86,219,.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(15,110,86,.07) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--blue-dark);font-weight:500;margin-bottom:1.5rem;box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(28px,5vw,48px);line-height:1.15;color:var(--navy);max-width:680px;margin-bottom:1.25rem;letter-spacing:-.5px}
+.hero h1 span{color:var(--blue)}
+.hero p{font-size:16px;color:var(--slate);max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{background:var(--blue);color:#fff;border:none;border-radius:20px;padding:13px 28px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(26,86,219,.3);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,86,219,.35)}
+.btn-secondary{background:var(--white);color:var(--blue);border:1.5px solid var(--border);border-radius:20px;padding:12px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s;text-decoration:none}
+.btn-secondary:hover{border-color:var(--blue)}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-n{font-family:'Sora',sans-serif;font-size:26px;font-weight:600;color:var(--blue)}
+.stat-l{font-size:12px;color:var(--muted)}
+
+/* TRUST */
+.trust{background:var(--white);border-bottom:0.5px solid #f0f4ff;padding:1.25rem 2rem;text-align:center}
+.trust p{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.trust-logos{display:flex;gap:2rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.trust-item{font-size:13px;font-weight:500;color:var(--slate)}
+
+/* SECTIONS */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-full{padding:5rem 2rem}
+.section-center{text-align:center;margin-bottom:3rem}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:.05em;margin-bottom:.75rem}
+.section h2{font-size:clamp(22px,3vw,32px);color:var(--navy);margin-bottom:.6rem;letter-spacing:-.3px}
+.section-sub{font-size:15px;color:var(--slate);max-width:500px;margin:0 auto}
+
+/* PROBLEM */
+.problem-bg{background:#fffbf8}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.problem-card{background:var(--white);border:1px solid #fed7d7;border-radius:var(--radius);padding:1.4rem;border-left:3px solid #e53e3e}
+.problem-icon{font-size:24px;margin-bottom:10px}
+.problem-card h3{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:5px}
+.problem-card p{font-size:13px;color:var(--slate);line-height:1.5}
+
+/* MODULES */
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.mod-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.mod-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,86,219,.12)}
+.mod-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px}
+.mod-card h3{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.mod-card p{font-size:12px;color:var(--slate);line-height:1.4}
+
+/* BENEFITS */
+.benefits-bg{background:linear-gradient(135deg,#e8f4fd 0%,#f0f7ff 100%)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.benefit-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow)}
+.benefit-num{font-family:'Sora',sans-serif;font-size:32px;font-weight:600;color:var(--blue);margin-bottom:4px}
+.benefit-card h3{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:5px}
+.benefit-card p{font-size:12px;color:var(--slate);line-height:1.5}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.test-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
+.test-quote{font-size:13px;color:var(--slate);line-height:1.7;font-style:italic;margin-bottom:1rem;position:relative}
+.test-quote::before{content:'"';font-family:'Sora',sans-serif;font-size:48px;color:var(--blue-light);position:absolute;top:-10px;left:-8px;line-height:1}
+.test-author{font-size:13px;font-weight:600;color:var(--navy)}
+.test-role{font-size:11px;color:var(--muted)}
+
+/* FAQ */
+.faq-bg{background:#f8faff}
+.faq-list{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.4rem}
+.faq-q{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.faq-q::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.faq-a{font-size:13px;color:var(--slate);line-height:1.6;padding-left:16px}
+
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,var(--blue) 0%,var(--green) 100%);padding:5rem 2rem;text-align:center}
+.cta-final h2{font-size:clamp(22px,3vw,32px);color:#fff;margin-bottom:.75rem}
+.cta-final p{font-size:15px;color:rgba(255,255,255,.85);max-width:440px;margin:0 auto 2.5rem;line-height:1.6}
+.form-card{background:var(--white);border-radius:20px;padding:2rem;max-width:400px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+.form-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;background:#f8faff;font-family:'Inter',sans-serif;color:var(--navy);margin-bottom:10px;outline:none;transition:border-color .15s}
+.form-input:focus{border-color:var(--blue)}
+.form-select{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;background:#f8faff;font-family:'Inter',sans-serif;color:var(--navy);margin-bottom:14px;outline:none}
+.btn-form{width:100%;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;box-shadow:0 4px 14px rgba(26,86,219,.3);transition:transform .15s}
+.btn-form:hover{transform:translateY(-1px)}
+.form-note{font-size:11px;color:var(--muted);margin-top:10px}
+
+/* WHATSAPP */
+.whatsapp-btn{position:fixed;bottom:24px;right:24px;z-index:200;background:#25d366;color:#fff;border:none;border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;box-shadow:0 4px 16px rgba(37,211,102,.4);transition:transform .15s;text-decoration:none}
+.whatsapp-btn:hover{transform:scale(1.08)}
+
+/* FOOTER */
+footer{background:#0a0f1a;padding:2.5rem 2rem;text-align:center}
+.footer-logo{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;color:var(--white);margin-bottom:6px}
+.footer-logo span{color:#5dcaa5}
+footer p{font-size:12px;color:#475569;margin-bottom:1.25rem}
+.footer-login{background:transparent;color:#475569;border:1px solid #1e293b;border-radius:20px;padding:7px 16px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{animation:fadeUp .5s ease both}
+.hero h1{animation:fadeUp .6s .1s ease both}
+.hero p{animation:fadeUp .6s .2s ease both}
+.hero-ctas{animation:fadeUp .6s .3s ease both}
+.hero-stats{animation:fadeUp .6s .4s ease both}
+
+@media(max-width:600px){
+  nav .nav-links .btn-ghost-nav{display:none}
+  .hero{padding:6rem 1.25rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">EDU<span>A</span></a>
+  <div class="nav-links">
+    <a class="btn-ghost-nav" href="https://edua-app.vercel.app" target="_blank">Ingresar al sistema</a>
+    <a class="btn-nav" href="#contacto">Solicitar demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#1a56db"/></svg>
+    Plataforma escolar 100% chilena
+  </div>
+  <h1>Tu liceo merece una plataforma que <span>realmente funcione</span></h1>
+  <p>EDUA centraliza asistencia, planificaciones, convivencia, PIE y más — en un sistema moderno, simple y con soporte local en Talcahuano.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#contacto">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agenda tu demo gratis
+    </a>
+    <a class="btn-secondary" href="#modulos">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+      Ver módulos
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">+10</div><div class="stat-l">Módulos incluidos</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Online y en la nube</div></div>
+    <div class="stat"><div class="stat-n">1 día</div><div class="stat-l">Para implementar</div></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <p>Ya confían en EDUA</p>
+  <div class="trust-logos">
+    <span class="trust-item">Liceo Técnico Talcahuano</span>
+    <span style="color:#e2e8f0">·</span>
+    <span style="font-size:13px;color:var(--muted);font-style:italic">Tu colegio podría ser el próximo →</span>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<div class="section-full problem-bg" id="problema">
+  <div class="section">
+    <div class="section-center">
+      <span class="badge" style="background:#fff5f5;color:#9b2c2c">El problema</span>
+      <h2>¿Reconoces alguna de estas situaciones?</h2>
+      <p class="section-sub">Cada día, cientos de establecimientos en Chile pierden tiempo valioso en tareas que podrían automatizarse.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📋</div>
+        <h3>Registros en papel que se pierden</h3>
+        <p>Libros de clases, asistencia manual y planillas que nadie puede encontrar cuando más se necesitan.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⏱️</div>
+        <h3>Horas perdidas en informes</h3>
+        <p>El UTP y directivos pasan horas recopilando datos que deberían estar disponibles en segundos.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📞</div>
+        <h3>Apoderados que llaman sin parar</h3>
+        <p>Consultan asistencia, notas y citaciones porque no tienen acceso directo a la información de sus hijos.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔀</div>
+        <h3>Sistemas desconectados</h3>
+        <p>Asistencia en Excel, notas en papel, convivencia en otro sistema. Nada se comunica con nada.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUCIÓN / MÓDULOS -->
+<div class="section-full" id="modulos">
+  <div class="section">
+    <div class="section-center">
+      <span class="badge" style="background:var(--green-light);color:#085041">La solución</span>
+      <h2>Todo tu colegio en una sola pantalla</h2>
+      <p class="section-sub">EDUA reúne todos los módulos que necesita tu establecimiento en una plataforma simple y accesible desde cualquier dispositivo.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="mod-card"><div class="mod-icon" style="background:var(--blue-light)">📋</div><h3>Asistencia</h3><p>Registro diario, atrasos y estadísticas por curso en tiempo real</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--green-light)">📚</div><h3>Planificaciones</h3><p>Unidades, OA, indicadores y descarga en PDF para la UTP</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--amber-light)">👨‍🏫</div><h3>Docentes</h3><p>Libro de clases digital, notas y gestión académica</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--pink-light)">🤝</div><h3>Convivencia</h3><p>Entrevistas, seguimientos y protocolos de convivencia escolar</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--purple-light)">🧠</div><h3>PIE / Dupla</h3><p>Registro y seguimiento de estudiantes con necesidades educativas</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--blue-light)">📊</div><h3>Estadísticas</h3><p>Gráficos de asistencia, notas y convivencia para la dirección</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--green-light)">🚪</div><h3>Portería</h3><p>Control de entradas, salidas y retiros con autorización</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--amber-light)">👨‍👩‍👧</div><h3>Apoderados</h3><p>Portal exclusivo con asistencia y notas en tiempo real</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--pink-light)">📄</div><h3>Informes</h3><p>Generación automática de informes para UTP y dirección</p></div>
+      <div class="mod-card"><div class="mod-icon" style="background:var(--purple-light)">⚙️</div><h3>Administración</h3><p>Usuarios, alumnos, roles y configuración del establecimiento</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFICIOS -->
+<div class="section-full benefits-bg">
+  <div class="section">
+    <div class="section-center">
+      <span class="badge" style="background:var(--blue-light);color:var(--blue-dark)">Beneficios</span>
+      <h2>Lo que cambia desde el primer día</h2>
+      <p class="section-sub">Resultados concretos que directores, UTP y docentes notan inmediatamente.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-num">−80%</div>
+        <h3>Tiempo en informes</h3>
+        <p>Lo que antes tomaba horas, ahora está disponible con un clic.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">24/7</div>
+        <h3>Acceso a la información</h3>
+        <p>Desde cualquier dispositivo, en cualquier momento y lugar.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">0</div>
+        <h3>Instalaciones requeridas</h3>
+        <p>Solo un navegador. Sin servidores ni infraestructura adicional.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">1</div>
+        <h3>Día para implementar</h3>
+        <p>Tu colegio operativo en un día, con soporte directo incluido.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIOS -->
+<div class="section-full" style="background:var(--white)">
+  <div class="section">
+    <div class="section-center">
+      <span class="badge" style="background:var(--green-light);color:#085041">Testimonios</span>
+      <h2>Lo que dicen quienes ya lo usan</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="test-card" style="border-left:3px solid var(--blue)">
+        <div class="test-quote" style="padding-left:24px">EDUA nos permitió digitalizar toda la gestión del liceo. La asistencia, planificaciones e informes ahora son automáticos. Un cambio enorme en el día a día.</div>
+        <div class="test-author">Felipe Hernández Mellado</div>
+        <div class="test-role">Docente · Liceo Técnico Talcahuano</div>
+      </div>
+      <div class="test-card" style="border-left:3px solid var(--green)">
+        <div class="test-quote" style="padding-left:24px">La portería y el módulo de convivencia nos dan control total del establecimiento. Muy fácil de usar, incluso para quienes no son expertos en tecnología.</div>
+        <div class="test-author">Equipo Administrativo</div>
+        <div class="test-role">Liceo Técnico Talcahuano</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-full faq-bg">
+  <div class="section">
+    <div class="section-center">
+      <span class="badge" style="background:var(--amber-light);color:#633806">Preguntas frecuentes</span>
+      <h2>Dudas que seguro tienes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">¿Cuánto tiempo tarda la implementación?</div><div class="faq-a">En un día tu colegio puede estar operativo. Te acompañamos en todo el proceso de configuración e importación de datos.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Necesito instalar algo en los computadores?</div><div class="faq-a">No. EDUA funciona 100% en el navegador web, desde cualquier computador, tablet o teléfono celular.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Qué pasa con mis datos actuales?</div><div class="faq-a">Podemos importar tus alumnos, cursos y asistencia desde Excel. Sin perder ningún dato del historial.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Tiene costo la demostración?</div><div class="faq-a">Completamente gratis. Agendas, te mostramos el sistema funcionando y decides sin ningún compromiso.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Dónde está el soporte técnico?</div><div class="faq-a">Somos de Talcahuano. El soporte es local, directo y rápido — no un call center lejano.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final" id="contacto">
+  <h2>¿Listo para transformar tu colegio?</h2>
+  <p>Agenda una demo gratuita de 30 minutos. Te mostramos EDUA funcionando en tu establecimiento — sin compromiso.</p>
+  <div class="form-card">
+    <input class="form-input" type="text" placeholder="Nombre completo" />
+    <input class="form-input" type="text" placeholder="Nombre del colegio o liceo" />
+    <input class="form-input" type="tel" placeholder="WhatsApp o teléfono" />
+    <input class="form-input" type="email" placeholder="Correo electrónico" />
+    <select class="form-select">
+      <option value="">¿Cuál es tu cargo?</option>
+      <option>Director/a</option>
+      <option>UTP</option>
+      <option>Sostenedor/a</option>
+      <option>Jefe/a de Administración</option>
+      <option>Docente</option>
+    </select>
+    <button class="btn-form">Quiero mi demo gratis →</button>
+    <p class="form-note">Sin compromiso · Respuesta en menos de 24 horas</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">EDU<span>A</span></div>
+  <p>La plataforma escolar de Talcahuano · edua.cl</p>
+  <a class="footer-login" href="https://edua-app.vercel.app" target="_blank">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10,17 15,12 10,7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+    Ingresar al sistema
+  </a>
+  <p style="margin-top:1.5rem;font-size:11px;color:#1e293b">© 2026 EDUA · Todos los derechos reservados</p>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp-btn" href="https://wa.me/56900000000?text=Hola,%20quiero%20conocer%20EDUA" target="_blank" title="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
